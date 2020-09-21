@@ -1,4 +1,5 @@
 import React from 'react'
+import axiosWithAuth from '../utlis/axiosWithAuth'
 
 export default function Login(props) {
     const {
@@ -16,6 +17,15 @@ export default function Login(props) {
     
     const onSubmit = event => {
         event.preventDefault();
+        axiosWithAuth()
+        .post('/users/login')
+        .then(res => {
+            window.localStorage.setItem('token', res.data.payload)
+            window.location = '/protected'
+        })
+        .catch(err => {
+            console.log(err)
+        })
         submit()
     }
 
