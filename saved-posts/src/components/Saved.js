@@ -1,16 +1,18 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import SavedCard from './SavedCard'
-// import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
-// const { id } = useParams()
+
 
 export default function Saved() {
+
+    const { id } = useParams()
 
     const [saved, setSaved] = useState ([])
 
     useEffect(() => {
-        axios.get(`https://reddit-sami.herokuapp.com/api/users/1/posts`)
+        axios.get(`https://reddit-sami.herokuapp.com/api/users/${id}/posts`)
         .then(res =>{
             console.log(res.data.data.posts)
             setSaved(res.data.data.posts)
