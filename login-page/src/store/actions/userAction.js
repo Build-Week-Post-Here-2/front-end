@@ -11,7 +11,7 @@ export const addUser = (user) => ( dispatch ) =>{
     axiosWithAuth()
       .post('auth/register', user)
       .then(res => {
-        console.log("onSubmit res:", res)
+        console.log(res)
         dispatch({
               type: ADD_USER_SUCCESS,
               payload: res.data
@@ -19,7 +19,7 @@ export const addUser = (user) => ( dispatch ) =>{
 
       })
     .catch(err => {
-      console.log("onSubmit err: ", err.response)
+      console.log(err.response)
       dispatch({
         type: ADD_USER_ERROR,
         payload: err.response
