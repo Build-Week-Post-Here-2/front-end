@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 const INITIAL_FORM_STATE = {
   username: "",
@@ -14,9 +15,21 @@ const SignUp = () => {
 
     setFormState({ ...formState, [target.name]: target.value });
   };
+
+  const onFormSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .post("https://reddit-sami.herokuapp.com/api/users/register", formState)
+      .then((res) => {
+        console.log(res);
+        if (res.statusText === "Created") {
+          console.log("New account is created successfully.");
+        }
+      });
+  };
   return (
     <div>
-      <form>
+      <form onSubmit={onFormSubmit}>
         <div className="form-group">
           <label>
             Username
