@@ -20,7 +20,7 @@ import {
 } from '../'
 
 const initialState = {
-  user : {
+  data : {
       userID: "",
       username: "",
       password: "",
