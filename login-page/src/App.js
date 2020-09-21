@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
-import './App.css'
-import Login from './Login'
 import * as yup from 'yup'
 import schema from './Validation/schema'
+
+import './App.css'
+import Login from './Login'
 
 
 const initialFormValues = {
@@ -67,7 +68,7 @@ function App() {
 
   const formSubmit = () => {
     const newLogin = {
-      name: formValues.username.trim(),
+      username: formValues.username.trim(),
       password: formValues.password.trim(),
     }
     postNewLogin(newLogin)
