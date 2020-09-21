@@ -28,7 +28,7 @@ function App() {
 
 
   const postNewLogin = newLogin => {
-    axios.post('https://reddit-sami.herokuapp.com/api/users/login')
+    axios.post('https://reddit-sami.herokuapp.com/api/users/login', newLogin)
     .then(res => {
       setLogin([...login, newLogin])
       setFormValues(initialFormValues)
@@ -38,6 +38,14 @@ function App() {
       alert('There was an error logging you in, please reload the page and try again.')
       console.log(err)
     })
+  }
+
+  const formSubmit = () => {
+    const newLogin = {
+      username: formValues.username.trim(),
+      password: formValues.password.trim(),
+    }
+    postNewLogin(newLogin)
   }
   
   const validate = (name, value) => {
@@ -64,14 +72,6 @@ function App() {
       ...formValues,
       [name]: value
     })
-  }
-
-  const formSubmit = () => {
-    const newLogin = {
-      username: formValues.username.trim(),
-      password: formValues.password.trim(),
-    }
-    postNewLogin(newLogin)
   }
 
   useEffect(() => {
