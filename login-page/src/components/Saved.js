@@ -12,7 +12,8 @@ export default function Saved() {
     const [saved, setSaved] = useState ([])
 
     useEffect(() => {
-        axios.get(`https://reddit-sami.herokuapp.com/api/users/${id}/posts`)
+        axios
+        .get(`/users/${id}/posts`)
         .then(res =>{
             console.log(res.data.data.posts)
             setSaved(res.data.data.posts)
