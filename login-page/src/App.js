@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import {Route, Switch} from 'react-router-dom'
 import axios from 'axios'
 import './App.css'
 import Login from './Login'
 import * as yup from 'yup'
+import schema from './Validation/schema'
 
 
 const initialFormValues = {
@@ -23,7 +23,7 @@ function App() {
   const [login, setLogin] = useState([])
   const [formValues, setFormValues] = useState(initialFormValues)
   const [formErrors, setFormErrors] = useState(initialFormErrors)
-  const [disabled, setDisabled] = useStat(initialDisabled)
+  const [disabled, setDisabled] = useState(initialDisabled)
 
 
   const postNewLogin = newLogin => {
@@ -66,7 +66,7 @@ function App() {
   }
 
   const formSubmit = () => {
-    const newOrder = {
+    const newLogin = {
       name: formValues.username.trim(),
       password: formValues.password.trim(),
     }
@@ -74,7 +74,7 @@ function App() {
   }
 
   useEffect(() => {
-    shema.isValid(formValues)
+    schema.isValid(formValues)
     .then(valid => {
       setDisabled(!valid)
     })
@@ -82,7 +82,6 @@ function App() {
 
   return (
     <div className="App">
-      <Route path='/login'>
         <Login 
         values = {formValues}
         change = {inputChange}
@@ -90,7 +89,6 @@ function App() {
         disabled = {disabled}
         errors = {formErrors}
         />
-      </Route>
     </div>
   );
 }

@@ -21,8 +21,8 @@ export default function Login(props) {
 
     return(
         <div>
-            <form onsubmit={onSubmit}>
-                <label> Username
+            <form onSubmit={onSubmit}>
+                <label> Username:
                     <input
                         type='text'
                         name='username'
@@ -33,7 +33,7 @@ export default function Login(props) {
                     <div>{errors.username}</div>
                 </label> <br />
 
-                <label>Password
+                <label>Password:
                     <input 
                         type='text'
                         name='password'
