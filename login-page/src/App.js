@@ -92,8 +92,9 @@ function App() {
         />
     </div>
 
-<Saved />
+
   );
+  <Saved />
 }
 
 export default App;
