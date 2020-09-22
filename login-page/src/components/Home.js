@@ -4,7 +4,6 @@ const Home = () => {
 
 
     return (
-
         <div>
             <h1>Home Page</h1>
             <h2>Post Here</h2>
@@ -13,11 +12,7 @@ const Home = () => {
             </p>
             <button>Sign Up</button>
         </div>
-
     )
-        
-    
-
 }
 
 export default Home
