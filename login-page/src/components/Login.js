@@ -81,7 +81,7 @@ const LoginForm = (props) => {
       <form onSubmit={formSubmit}>
         <label>
           {" "}
-          Username:
+          Username: <br />
           <input
             type="text"
             name="username"
@@ -93,7 +93,7 @@ const LoginForm = (props) => {
         </label>{" "}
         <br />
         <label>
-          Password:
+          Password: <br />
           <input
             type="text"
             name="password"

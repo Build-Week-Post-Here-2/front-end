@@ -1,8 +1,9 @@
 import React from 'react'
 import { styled, makeStyles } from '@material-ui/core/styles'
-import { Button, Link } from '@material-ui/core'
+import Button from '@material-ui/core/Button'
+import { Link } from 'react-router-dom'
 import RedditIcon from '@material-ui/icons/Reddit';
-// import "fontsource-roboto/500.css"
+import 'fontsource-roboto'
 import SignUp from './SignUp';
 
 const Home = () => {
@@ -15,7 +16,7 @@ const Home = () => {
             <img src={ require('../images/reddit-alient.png') } />
             <p className={classes.p}>It's a simple problem, really. You have the content, but you do not know which subreddit to share it on so that it gets all the glory it deserves. Good news - we figured it out for you! No more need for endless subreddit searching to find the right home for your posts. It's easy (we promise!). Sign up, share your post with us, and we will send you on your way to internet stardom.<br /> <br /> What are you waiting for? Click here to get started:
             </p>
-            <Link to={SignUp}>
+            <Link to='/signup'>
             <SignUpButton>Sign Up</SignUpButton>
             </Link>
         </div>
@@ -24,8 +25,9 @@ const Home = () => {
 //styles
 const useStyles = makeStyles(theme => ({
     p: {
+        fontFamily: 'Roboto',
         fontSize: '2em',
-        margin: '5%'
+        margin: '5%',
     },
     h1: {
         fontSize: '4em',
