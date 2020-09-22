@@ -1,7 +1,7 @@
 export const LOAD_START = "LOAD_START"
 export const LOAD_SUCCESS = "LOAD_SUCCESS" 
 export const LOAD_FAILURE = "LOAD_FAILURE"
-export const SUBMIT_POST_LIST = "SUBMIT_POST_LIST"
+export const SUBMIT_POST = "SUBMIT_POST"
 export const EDIT_POST = "EDIT_POST"
 export const DEL_POST = "DEL_POST"
 export const DEL_POST_SUCCESS = "DEL_POST_SUCCESS"

@@ -20,7 +20,7 @@ function App() {
     {/* <NavigationBar/> */}
     <Route path='/signup' component={SignUp}/>
     <Route path='/login' component={LoginForm}/>
-    <PrivateRoute path='/protected' component={Home}/>
+    <PrivateRoute path='/home' component={Home}/>
     <PrivateRoute path='/account' component={AccountSettings}/>
   </div>
   )
