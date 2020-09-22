@@ -20,7 +20,6 @@ const DeletePost = () => {
     return (
         <div>
             <button onClick={delPost}>Delete</button>
-            {/* <button type="submit" onClick={set(false)}>Cancel</button> */}
         </div>
     )
 }
