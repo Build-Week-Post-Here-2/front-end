@@ -6,4 +6,3 @@ export const LOG_ON_SUCCESS = "LOG_ON_SUCCESS"
 export const LOG_ON_FAIL = "LOG_ON_FAIL"
 export const UPDATE_USER = "UPDATE_USER"
 
-// writing this to see if it can commit this
