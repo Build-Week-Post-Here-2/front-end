@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import axios from "axios";
-
 import axiosWithAuth from "../utlis/axiosWithAuth";
 
 const INITIAL_FORM_STATE = {
@@ -11,6 +9,7 @@ const INITIAL_FORM_STATE = {
 
 const SignUp = () => {
   const [formState, setFormState] = useState(INITIAL_FORM_STATE);
+  const [responseMsg, setResponseMsg] = useState({ success: null, msg: "" });
 
   const handleInputChange = (e) => {
     const target = e.target;
@@ -27,15 +26,32 @@ const SignUp = () => {
         if (res.statusText === "Created") {
           console.log("New account is created successfully.");
           setFormState(INITIAL_FORM_STATE);
+          setResponseMsg({
+            success: true,
+            msg: "New account is created successfully.",
+          });
         }
       })
       .catch((err) => {
         // debugger;
         console.log(err);
+        setResponseMsg({
+          success: false,
+          msg: "Something went wrong. Please try again.",
+        });
       });
   };
   return (
     <div>
+      {responseMsg.success !== null && (
+        <p
+          className={`text-center ${
+            responseMsg.success ? "text-success" : "text-danger"
+          }`}
+        >
+          This is a message
+        </p>
+      )}
       <form onSubmit={onFormSubmit}>
         <div className="form-group">
           <label>
