@@ -68,7 +68,7 @@ const SignUp = () => {
           console.log(err.response);
           setResponseMsg({
             success: false,
-            msg: err.response,
+            msg: err.response.data.message,
           });
         }
       });
@@ -81,7 +81,7 @@ const SignUp = () => {
             responseMsg.success ? "text-success" : "text-danger"
           }`}
         >
-          This is a message
+          {responseMsg.msg}
         </p>
       )}
       <form onSubmit={onFormSubmit}>
