@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+import axiosWithAuth from "../utlis/axiosWithAuth";
+
 const INITIAL_FORM_STATE = {
   username: "",
   email: "",
@@ -18,13 +20,18 @@ const SignUp = () => {
 
   const onFormSubmit = (e) => {
     e.preventDefault();
-    axios
+    axiosWithAuth()
       .post("/users/register", formState)
       .then((res) => {
         console.log(res);
         if (res.statusText === "Created") {
           console.log("New account is created successfully.");
+          setFormState(INITIAL_FORM_STATE);
         }
+      })
+      .catch((err) => {
+        // debugger;
+        console.log(err);
       });
   };
   return (
