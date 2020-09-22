@@ -7,6 +7,7 @@ import  SignUp  from './components/SignUp'
 import  Home  from './components/Home'
 import  PrivateRoute  from './components/PrivateRoute'
 import  AccountSettings  from './components/AccountSettings'
+import NavigationBar from './components/NavigationBar';
 // import NavigationBar from './components/NavigationBar';
 
 
@@ -17,7 +18,7 @@ import  AccountSettings  from './components/AccountSettings'
 function App() {
   return (
   <div className='App'>
-    {/* <NavigationBar/> */}
+    <NavigationBar />
     <Route path='/signup' component={SignUp}/>
     <Route path='/login' component={LoginForm}/>
     <PrivateRoute path='/protected' component={Home}/>
