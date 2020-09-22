@@ -5,6 +5,11 @@ import { LOAD_START, LOAD_SUCCESS, LOAD_FAILURE } from '../store'
 
 const AccountSettings = () => {
 
+
+    return {
+        
+    }
+
 }
 
 export default AccountSettings

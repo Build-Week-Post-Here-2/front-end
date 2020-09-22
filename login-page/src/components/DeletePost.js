@@ -6,6 +6,11 @@ import { DEL_TODO } from '../store'
 
 const DeletePost = () => {
 
+
+    return {
+        
+    }
+
 }
 
 export default DeletePost
