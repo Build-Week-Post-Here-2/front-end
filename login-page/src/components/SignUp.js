@@ -19,7 +19,7 @@ const SignUp = () => {
   const onFormSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("https://reddit-sami.herokuapp.com/api/users/register", formState)
+      .post("/users/register", formState)
       .then((res) => {
         console.log(res);
         if (res.statusText === "Created") {
