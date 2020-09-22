@@ -12,7 +12,7 @@ const NavigationBar = (user) => {
                 : <></>
             }
             { !window.localStorage.getItem('token') ?
-                <StyledNavLink to='/protected'>Home</StyledNavLink>
+                <StyledNavLink to='/home'>Home</StyledNavLink>
                 : <></>
             }
             { !window.localStorage.getItem('token') ?
