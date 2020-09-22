@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as yup from "yup";
 
 import axiosWithAuth from "../utlis/axiosWithAuth";
@@ -16,10 +16,16 @@ const INITIAL_ERROR_STATE = {
   email: "",
 };
 
-const SignUp = () => {
+const SignUp = (props) => {
   const [formState, setFormState] = useState(INITIAL_FORM_STATE);
   const [responseMsg, setResponseMsg] = useState({ success: null, msg: "" });
   const [formErrors, setFormErrors] = useState(INITIAL_ERROR_STATE);
+
+  useEffect(() => {
+    if (props && props.userData) {
+      setFormState(props.userData);
+    }
+  }, [props]);
 
   const handleInputChange = (e) => {
     const target = e.target;
@@ -55,10 +61,13 @@ const SignUp = () => {
         console.log(res);
         if (res.statusText === "Created") {
           console.log("New account is created successfully.");
+          const successMsg = props.btn
+            ? "Account is updated successfully."
+            : "New account is created successfully.";
           setFormState(INITIAL_FORM_STATE);
           setResponseMsg({
             success: true,
-            msg: "New account is created successfully.",
+            msg: successMsg,
           });
         }
       })
@@ -68,7 +77,7 @@ const SignUp = () => {
           console.log(err.response);
           setResponseMsg({
             success: false,
-            msg: err.response,
+            msg: err.response.data.message,
           });
         }
       });
@@ -81,7 +90,7 @@ const SignUp = () => {
             responseMsg.success ? "text-success" : "text-danger"
           }`}
         >
-          This is a message
+          {responseMsg.msg}
         </p>
       )}
       <form onSubmit={onFormSubmit}>
@@ -126,7 +135,11 @@ const SignUp = () => {
             <div>{formErrors.password}</div>
           </label>
         </div>
-        <input type="submit" value="Sign Up" className="btn btn-primary" />
+        <input
+          type="submit"
+          value={props.btn || "Sign Up"}
+          className="btn btn-primary"
+        />
       </form>
     </div>
   );
