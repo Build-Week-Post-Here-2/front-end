@@ -64,11 +64,13 @@ const SignUp = () => {
       })
       .catch((err) => {
         // debugger;
-        console.log(err);
-        setResponseMsg({
-          success: false,
-          msg: "Something went wrong. Please try again.",
-        });
+        if (err.response) {
+          console.log(err.response);
+          setResponseMsg({
+            success: false,
+            msg: err.response,
+          });
+        }
       });
   };
   return (
