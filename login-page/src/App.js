@@ -15,7 +15,7 @@ function App() {
       <NavigationBar />
       <Route path="/signup" component={SignUp} />
       <Route path="/login" component={LoginForm} />
-      <Route path="/home" component={Home} />
+      <PrivateRoute path="/home" component={Home} />
       <PrivateRoute path="/account" component={AccountSettings} />
       <PrivateRoute path="/savedposts" component={Saved} />
     </div>
