@@ -6,20 +6,19 @@ import { useParams } from 'react-router-dom';
 import RedditIcon from '@material-ui/icons/Reddit';
 import { makeStyles } from '@material-ui/core/styles'
 
-
-
 export default function Saved() {
+  // const { id } = useParams()
 
-    const { id } = useParams()
+  const [saved, setSaved] = useState([]);
 
-    const [saved, setSaved] = useState ([])
-
-    useEffect(() => {
-        axios
+  useEffect(() => {
+    const id = window.localStorage.getItem("uid");
+    if (id && saved.length === 0) {
+      axiosWithAuth()
         .get(`/users/${id}/posts`)
-        .then(res =>{
-            console.log(res.data.data.posts)
-            setSaved(res.data.data.posts)
+        .then((res) => {
+          //   console.log(res);
+          setSaved(res.data.data.posts);
         })
         .catch(err => {
             console.log(err)
@@ -50,3 +49,4 @@ const useStyles = makeStyles(theme => ({
         width: '25%'
     }
   }));
+

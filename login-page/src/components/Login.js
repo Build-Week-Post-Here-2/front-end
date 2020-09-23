@@ -4,6 +4,8 @@ import schema from "../Validation/loginFormSchema";
 import axiosWithAuth from "../utlis/axiosWithAuth";
 import { styled, makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
+// import { LOG_ON_SUCCESS, reducer } from "../store";
+// import { useDispatch } from "react-redux";
 
 const initialFormValues = {
   username: "",
@@ -16,6 +18,7 @@ const initialFormErrors = {
 };
 
 const LoginForm = (props) => {
+  // const dispatch = useDispatch();
   const initialDisabled = true;
 
   const [login, setLogin] = useState([]);
@@ -29,10 +32,19 @@ const LoginForm = (props) => {
       .then((res) => {
         setLogin([...login, newLogin]);
         setFormValues(initialFormValues);
+        // dispatch({
+        //   type: LOG_ON_SUCCESS,
+        //   payload: {
+        //     username: res.data.data.username,
+        //     email: res.data.data.email,
+        //     password: res.data.data.password,
+        //   },
+        // });
         window.localStorage.setItem("token", res.data.token);
         window.location = '/home'
         window.localStorage.setItem("username", res.data.data.username);
         window.localStorage.setItem("email", res.data.data.email);
+        window.localStorage.setItem("uid", res.data.data.id);
       })
       .catch((err) => {
         alert(
@@ -114,9 +126,9 @@ const LoginForm = (props) => {
           />
         </label>
         <div>{formErrors.password}</div>
-        <LogInButton disabled={disabled} name="loginButton">
+        <button disabled={disabled} name="loginButton">
           Login
-        </LogInButton>
+        </button>
       </form>
     </div>
   );
