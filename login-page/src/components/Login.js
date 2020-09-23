@@ -27,8 +27,8 @@ const LoginForm = (props) => {
       .then((res) => {
         setLogin([...login, newLogin]);
         setFormValues(initialFormValues);
-        // window.location = '/protected'
-        console.log(newLogin);
+        window.localStorage.setItem("token", res.data.token);
+        window.location = '/protected'
       })
       .catch((err) => {
         alert(
@@ -38,7 +38,8 @@ const LoginForm = (props) => {
       });
   };
 
-  const formSubmit = () => {
+  const formSubmit = (e) => {
+    e.preventDefault();
     const newLogin = {
       username: formValues.username.trim(),
       password: formValues.password.trim(),

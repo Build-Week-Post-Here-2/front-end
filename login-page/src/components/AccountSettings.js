@@ -28,7 +28,6 @@ const AccountSettings = () => {
 
   const onBtnClick = () => {
     setCanUpdate(true);
-    console.log("...");
   };
 
   return (
