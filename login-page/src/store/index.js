@@ -3,7 +3,7 @@ export { reducer } from './reducers/userReducer'
 export { LOAD_START, 
     LOAD_SUCCESS, 
     LOAD_FAILURE, 
-    SUBMIT_POST_LIST, 
+    SUBMIT_POST, 
     EDIT_POST, 
     DEL_POST, 
     DEL_POST_SUCCESS,
