@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 import SignUp from "./SignUp";
 import axiosWithAuth from "../utlis/axiosWithAuth";
 //STYLE IMPORTS
-import { styled, makeStyles } from '@material-ui/core/styles'
+import { styled } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
 
 const DUMMY_USER_DATA = {
@@ -32,7 +32,6 @@ const AccountSettings = () => {
   const onBtnClick = () => {
     setCanUpdate(true);
   };
-  const classes=useStyles(); // for material UI styling
   return (
     <div className="p-3">
       {canUpdate && <SignUp btn="Save changes" userData={DUMMY_USER_DATA} />}
@@ -46,24 +45,6 @@ const AccountSettings = () => {
     </div>
   );
 };
-
-const useStyles = makeStyles(theme => ({
-  form: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  labelUsername: {
-    marginTop: '5%',
-    fontSize: '1.5em',
-  },
-  labelPassword: {
-    fontSize: '1.5em',
-  },
-  input: {
-    borderRadius: '5px',
-  }
-}));
 
 const AccountButton = styled(Button)({
   background: 'linear-gradient(45deg, blue 1%, rgb(252,140,3) 90%)',

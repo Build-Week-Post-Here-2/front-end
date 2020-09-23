@@ -24,7 +24,7 @@ export default function Saved() {
         .catch(err => {
             console.log(err)
         })
-    }, [])
+    }, [id])
 
     const classes=useStyles(); //for materialUI Styles
 
