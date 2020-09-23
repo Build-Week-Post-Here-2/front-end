@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import * as yup from "yup";
 import schema from "../Validation/loginFormSchema";
 import axiosWithAuth from "../utlis/axiosWithAuth";
-import { styled, makeStyles } from '@material-ui/core/styles'
-import Button from '@material-ui/core/Button'
+import { styled, makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
 
 const initialFormValues = {
   username: "",
@@ -30,7 +30,8 @@ const LoginForm = (props) => {
         setLogin([...login, newLogin]);
         setFormValues(initialFormValues);
         window.localStorage.setItem("token", res.data.token);
-        window.location = '/protected'
+        window.localStorage.setItem("username", res.data.data.username);
+        window.localStorage.setItem("email", res.data.data.email);
       })
       .catch((err) => {
         alert(
@@ -80,12 +81,12 @@ const LoginForm = (props) => {
     });
   }, [formValues]);
 
-  const classes=useStyles(); // for material UI styling
+  const classes = useStyles(); // for material UI styling
 
   return (
     <div>
       <form className={classes.form} onSubmit={formSubmit}>
-        <label className = {classes.labelUsername}>
+        <label className={classes.labelUsername}>
           {" "}
           Username: <br />
           <input
@@ -94,12 +95,12 @@ const LoginForm = (props) => {
             value={formValues.username}
             placeholder="Username"
             onChange={validate}
-            className = {classes.input}
+            className={classes.input}
           />
           <div>{formErrors.username}</div>
         </label>{" "}
         <br />
-        <label className = {classes.labelPassword}>
+        <label className={classes.labelPassword}>
           Password: <br />
           <input
             type="text"
@@ -107,7 +108,7 @@ const LoginForm = (props) => {
             value={formValues.password}
             placeholder="Password"
             onChange={validate}
-            className = {classes.input}
+            className={classes.input}
           />
         </label>
         <div>{formErrors.password}</div>
@@ -119,34 +120,33 @@ const LoginForm = (props) => {
   );
 };
 //STYLES
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   form: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
   },
   labelUsername: {
-    marginTop: '5%',
-    fontSize: '1.5em',
+    marginTop: "5%",
+    fontSize: "1.5em",
   },
   labelPassword: {
-    fontSize: '1.5em',
+    fontSize: "1.5em",
   },
   input: {
-    borderRadius: '5px',
-  }
+    borderRadius: "5px",
+  },
 }));
 
 const LogInButton = styled(Button)({
-  background: 'linear-gradient(45deg, blue 1%, rgb(252,140,3) 90%)',
+  background: "linear-gradient(45deg, blue 1%, rgb(252,140,3) 90%)",
   border: 0,
   borderRadius: 3,
-  color: 'white',
+  color: "white",
   height: 48,
-  padding: '0 30px',
-  fontSize: '1.5em',
-  marginTop: '2%',
+  padding: "0 30px",
+  fontSize: "1.5em",
+  marginTop: "2%",
 });
-
 
 export default LoginForm;

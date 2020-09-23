@@ -136,19 +136,6 @@ const SignUp = (props) => {
             <div className="text-danger">{formErrors.email}</div>
           </label>
         </div>
-        <div className="form-group">
-          <label>
-            Password
-            <input
-              name="password"
-              type="password"
-              className="form-control"
-              value={formState.password}
-              onChange={handleInputChange}
-            />
-            <div className="text-danger">{formErrors.password}</div>
-          </label>
-        </div>
         {props.btn ? (
           <input
             type="submit"
@@ -156,11 +143,26 @@ const SignUp = (props) => {
             className={`btn btn-primary ${disabled ? "disabled" : "active"}`}
           />
         ) : (
-          <input
-            type="submit"
-            value={"Sign Up"}
-            className={`btn btn-primary ${disabled ? "disabled" : "active"}`}
-          />
+          <>
+            <div className="form-group">
+              <label>
+                Password
+                <input
+                  name="password"
+                  type="password"
+                  className="form-control"
+                  value={formState.password}
+                  onChange={handleInputChange}
+                />
+                <div className="text-danger">{formErrors.password}</div>
+              </label>
+            </div>
+            <input
+              type="submit"
+              value={"Sign Up"}
+              className={`btn btn-primary ${disabled ? "disabled" : "active"}`}
+            />
+          </>
         )}
       </form>
     </div>
