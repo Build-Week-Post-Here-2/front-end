@@ -24,7 +24,9 @@ export default function Saved() {
     }, [])
 
     return (
+
         <div> 
+            <h1>Saved Posts</h1>
             {saved.map(postInfo => {
                 return <SavedCard
                 name={postInfo.post_title}
