@@ -32,7 +32,7 @@ export default function Saved() {
     return (
 
         <div> 
-            <h1 className={classes.h1}>Saved P<RedditIcon />sts</h1>
+            <h1 className={classes.h1}>Saved <br /> P<RedditIcon />sts</h1>
             {saved.map(postInfo => {
                 return <SavedCard
                 name={postInfo.post_title}
@@ -48,7 +48,7 @@ const useStyles = makeStyles(theme => ({
         fontSize: '4em',
         margin: '5% auto',
         border: '2px solid orange',
-        width: '25%'
+        width: '20%'
     }
   }));
 
