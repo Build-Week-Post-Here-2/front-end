@@ -30,6 +30,7 @@ const LoginForm = (props) => {
         setLogin([...login, newLogin]);
         setFormValues(initialFormValues);
         window.localStorage.setItem("token", res.data.token);
+        window.location = '/home'
         window.localStorage.setItem("username", res.data.data.username);
         window.localStorage.setItem("email", res.data.data.email);
       })
@@ -88,7 +89,7 @@ const LoginForm = (props) => {
       <form className={classes.form} onSubmit={formSubmit}>
         <label className={classes.labelUsername}>
           {" "}
-          Username: <br />
+          Username <br />
           <input
             type="text"
             name="username"
@@ -100,10 +101,11 @@ const LoginForm = (props) => {
           <div>{formErrors.username}</div>
         </label>{" "}
         <br />
-        <label className={classes.labelPassword}>
-          Password: <br />
+
+        <label className = {classes.labelPassword}>
+          Password <br />
           <input
-            type="text"
+            type="password"
             name="password"
             value={formValues.password}
             placeholder="Password"

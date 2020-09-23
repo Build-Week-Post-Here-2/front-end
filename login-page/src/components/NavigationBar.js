@@ -1,11 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import RedditIcon from '@material-ui/icons/Reddit';
 
 const NavigationBar = (user) => {
   return (
     <StyledNav>
-      <StyledNavLink to="/protected">Home</StyledNavLink>
+      <StyledNavLink to="/home">Home</StyledNavLink>
       {!window.localStorage.getItem("token") ? (
         <StyledNavLink to="/login">Log In</StyledNavLink>
       ) : (
