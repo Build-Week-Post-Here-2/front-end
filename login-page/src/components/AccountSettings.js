@@ -32,15 +32,15 @@ const AccountSettings = () => {
   const onBtnClick = () => {
     setCanUpdate(true);
   };
-
   const classes=useStyles(); // for material UI styling
-
   return (
     <div className="p-3">
       {canUpdate && <SignUp btn="Save changes" userData={DUMMY_USER_DATA} />}
       {!canUpdate && (
-        <AccountButton onClick={onBtnClick}>
+        <AccountButton>
+        <a onClick={onBtnClick}>
           Update Account
+        </a>
         </AccountButton>
       )}
     </div>

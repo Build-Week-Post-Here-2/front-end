@@ -123,6 +123,7 @@ const SignUp = (props) => {
               placeholder="Username"
               value={formState.username}
               onChange={handleInputChange}
+              className={classes.input}
             />
             <div className="text-danger">{formErrors.username}</div>
           </label>
@@ -137,6 +138,7 @@ const SignUp = (props) => {
               placeholder="Your email"
               value={formState.email}
               onChange={handleInputChange}
+              className={classes.input}
             />
             <div className="text-danger">{formErrors.email}</div>
           </label>
@@ -150,11 +152,12 @@ const SignUp = (props) => {
               // className="form-control"
               value={formState.password}
               onChange={handleInputChange}
+              className={classes.input}
             />
             <div className="text-danger">{formErrors.password}</div>
           </label>
         <SignUpButton disabled={disabled} name="loginButton">
-          Login
+          Submit
         </SignUpButton>
       </form>
     </div>
@@ -179,6 +182,9 @@ const useStyles = makeStyles(theme => ({
   labelEmail: {
     fontSize: '1.5em',
     marginTop: '2%',
+  },
+  input: {
+    borderRadius: '5px',
   }
 }));
 

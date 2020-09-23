@@ -17,7 +17,7 @@ function App() {
       <Route path="/login" component={LoginForm} />
       <Route path="/home" component={Home} />
       <Route path="/account" component={AccountSettings} />
-      <Route path="/saved" component={Saved} />
+      <Route path="/savedposts" component={Saved} />
     </div>
   );
 }

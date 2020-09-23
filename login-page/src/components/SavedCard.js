@@ -13,7 +13,7 @@ const SavedCard = (props) => {
 
 const useStyles = makeStyles(theme => ({
   div: {
-    border: '2px solid black'
+    border: '2px solid rgb(252,140,3)'
   },
   h2: {
     margin: '2%',
