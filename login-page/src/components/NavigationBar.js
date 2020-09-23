@@ -2,8 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
-import { LOAD_START, LOAD_SUCCESS, LOAD_FAILURE } from "../store";
-
 const NavigationBar = (user) => {
   return (
     <StyledNav>
@@ -46,4 +44,4 @@ const StyledNavLink = styled(NavLink)`
   text-decoration: none;
 `;
 
-export default NavigationBar;
+export default NavigationBar

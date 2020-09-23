@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
-import axiosWithAuth from "../utlis/axiosWithAuth";
-import { useHistory } from "react-router-dom";
-import { LOAD_START, LOAD_SUCCESS, LOAD_FAILURE } from "../store";
+import React, { useState, useEffect } from "react";
+// import axios from 'axios'
+// import { useHistory } from "react-router-dom";
+// import { LOAD_START, LOAD_SUCCESS, LOAD_FAILURE } from "../store";
 import SignUp from "./SignUp";
+import axiosWithAuth from "../utlis/axiosWithAuth";
 
 const INIT_USER_DATA = {
   username: "",
@@ -12,6 +13,18 @@ const INIT_USER_DATA = {
 const AccountSettings = () => {
   const [canUpdate, setCanUpdate] = useState(false);
   const [userData, setUserData] = useState(INIT_USER_DATA);
+
+  useEffect(() => {
+    axiosWithAuth()
+      .put("/users/register")
+      .then((res) => {
+        setCanUpdate(!window.localStorage.getItem("/user"));
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
 
   const onBtnClick = () => {
     setCanUpdate(true);

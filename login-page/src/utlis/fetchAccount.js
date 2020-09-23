@@ -4,7 +4,7 @@ function fetchAccountDetails (user) {
     const username = window.localStorage.getItem('username')
     
     return axiosWithAuth()
-        .get(`/users/username/${ username.toLowerCase() }` )
+        .get(`/username/${ username.toLowerCase() }` )
         .then( res => { 
             return res
         }).catch( err => {
