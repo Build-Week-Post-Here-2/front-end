@@ -157,9 +157,9 @@ const SignUp = (props) => {
             />
             <div className="text-danger">{formErrors.password}</div>
           </label>
-        <SignUpButton disabled={disabled} name="loginButton">
+        <button disabled={disabled} name="loginButton">
           SignUp
-        </SignUpButton>
+        </button>
 
       </form>
     </div>

@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import SavedCard from './SavedCard'
 import { useParams } from 'react-router-dom';
+import axiosWithAuth from '../utlis/axiosWithAuth';
 //styles
 import RedditIcon from '@material-ui/icons/Reddit';
 import { makeStyles } from '@material-ui/core/styles'
@@ -20,10 +21,11 @@ export default function Saved() {
           //   console.log(res);
           setSaved(res.data.data.posts);
         })
-        .catch(err => {
-            console.log(err)
-        })
-    }, [id])
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [saved]);
 
     const classes=useStyles(); //for materialUI Styles
 
