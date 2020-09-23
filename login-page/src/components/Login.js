@@ -28,6 +28,8 @@ const LoginForm = (props) => {
         setLogin([...login, newLogin]);
         setFormValues(initialFormValues);
         window.localStorage.setItem("token", res.data.token);
+        window.localStorage.setItem("username", res.data.data.username);
+        window.localStorage.setItem("email", res.data.data.email);
       })
       .catch((err) => {
         alert(
