@@ -8,33 +8,42 @@ import axiosWithAuth from "../utlis/axiosWithAuth";
 import { styled } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
 
-const DUMMY_USER_DATA = {
-  username: "user",
-  email: "user@domain.com",
-  password: "123456",
+const INIT_USER_DATA = {
+  username: "",
+  email: "",
 };
 
 const AccountSettings = () => {
   const [canUpdate, setCanUpdate] = useState(false);
+  const [userData, setUserData] = useState(INIT_USER_DATA);
 
-  useEffect(() =>{
-      axiosWithAuth()
-      .put('/users/register')
-      .then(res => {
-        setCanUpdate(!window.localStorage.getItem('/user'))
-        console.log(res)
+  useEffect(() => {
+    axiosWithAuth()
+      .put("/users/register")
+      .then((res) => {
+        setCanUpdate(!window.localStorage.getItem("/user"));
+        console.log(res);
       })
-      .catch(err => {
-        console.log(err)
-      })
-  })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
 
   const onBtnClick = () => {
     setCanUpdate(true);
   };
+
+  useEffect(() => {
+    const USERNAME = window.localStorage.getItem("username");
+    const EMAIL = window.localStorage.getItem("email");
+    if (canUpdate) {
+      setUserData({ ...userData, username: USERNAME, email: EMAIL });
+    }
+  }, [canUpdate]);
+
   return (
     <div className="p-3">
-      {canUpdate && <SignUp btn="Save changes" userData={DUMMY_USER_DATA} />}
+      {canUpdate && <SignUp btn="Save changes" userData={userData} />}
       {!canUpdate && (
         <AccountButton>
         <a onClick={onBtnClick}>

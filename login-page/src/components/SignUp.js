@@ -142,6 +142,7 @@ const SignUp = (props) => {
             />
             <div className="text-danger">{formErrors.email}</div>
           </label>
+
         {/* </div> */}
         {/* <div className="form-group"> */}
           <label className={classes.labelPassword}>
@@ -157,8 +158,9 @@ const SignUp = (props) => {
             <div className="text-danger">{formErrors.password}</div>
           </label>
         <SignUpButton disabled={disabled} name="loginButton">
-          Submit
+          SignUp
         </SignUpButton>
+
       </form>
     </div>
   );
