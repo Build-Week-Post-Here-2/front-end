@@ -23,10 +23,11 @@ const LoginForm = (props) => {
 
   const postNewLogin = (newLogin) => {
     axiosWithAuth()
-      .post("/users/login", newLogin)
+      .post("https://reddit-sami.herokuapp.com/api/users/login", newLogin)
       .then((res) => {
         setLogin([...login, newLogin]);
         setFormValues(initialFormValues);
+        // window.location = '/protected'
         console.log(newLogin);
       })
       .catch((err) => {

@@ -10,7 +10,7 @@ const DeletePost = () => {
 
     const delPost = (e) => {
         axiosWithAuth()
-            .delete(`/items/${id}`)
+            .delete(`/users/${id}`)
             .then( res => {
                 dispatch({ type: DEL_POST, payload: { name: name, listid: listid}})
                 push('/home')
