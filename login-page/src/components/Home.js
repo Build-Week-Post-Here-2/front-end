@@ -19,6 +19,46 @@ const Home = () => {
             <Link to='/signup'>
             <SignUpButton>Sign Up</SignUpButton>
             </Link>
+            <h2>Popular Subreddits</h2> <br />
+            <div className={classes.container}>
+                <div>
+                    <img className={classes.img} src={ require('../images/Reddit_Mark_OnDark.png') } />
+                    <h4>r/announcements</h4>
+                </div>
+                <div>
+                    <img className={classes.img} src={ require('../images/Reddit_Mark_OnDark.png') } />
+                    <h4>r/gaming</h4>
+                </div>
+                <div>
+                    <img className={classes.img} src={ require('../images/Reddit_Mark_OnDark.png') } />
+                    <h4>r/funny</h4>
+                </div>
+                <div>
+                    <img className={classes.img} src={ require('../images/Reddit_Mark_OnDark.png') } />
+                    <h4>r/AskReddit</h4>
+                </div>
+            </div>
+            <br />
+            <br />
+            <br />
+            <div className={classes.container}>
+                <div>
+                    <img className={classes.img} src={ require('../images/Reddit_Mark_OnDark.png') } />
+                    <h4>r/pics</h4>
+                </div>
+                <div>
+                    <img className={classes.img} src={ require('../images/Reddit_Mark_OnDark.png') } />
+                    <h4>r/science</h4>
+                </div>
+                <div>
+                    <img className={classes.img} src={ require('../images/Reddit_Mark_OnDark.png') } />
+                    <h4>r/WorldNews</h4>
+                </div>
+                <div>
+                    <img className={classes.img} src={ require('../images/Reddit_Mark_OnDark.png') } />
+                    <h4>r/aww</h4>
+                </div>
+            </div>
         </div>
     )
 }
@@ -28,12 +68,23 @@ const useStyles = makeStyles(theme => ({
         fontFamily: 'Roboto',
         fontSize: '2em',
         margin: '5%',
+        background:'rgb(252,140,3, .3)',
+        borderRadius: '5px',
+        padding: '5%',
     },
     h1: {
         fontSize: '4em',
         margin: '5% auto',
         border: '2px solid orange',
         width: '25%'
+    },
+    container: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent:'space-around',
+    },
+    img: {
+        padding: '10%',
     }
   }));
 
