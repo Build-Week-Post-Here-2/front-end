@@ -84,6 +84,7 @@ const SignUp = (props) => {
             msg: successMsg,
           });
         }
+        window.location = '/login'
       })
       .catch((err) => {
         // debugger;
