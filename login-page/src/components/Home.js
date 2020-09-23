@@ -1,8 +1,7 @@
 import React from 'react'
 import { styled, makeStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
-import RedditIcon from '@material-ui/icons/Reddit';
-import { Link } from 'react-router-dom'
+import RedditIcon from '@material-ui/icons/Reddit'
 import NewPost from './CreateNewPost'
 import 'fontsource-roboto'
 
