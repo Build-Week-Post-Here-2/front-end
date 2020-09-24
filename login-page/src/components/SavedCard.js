@@ -1,5 +1,6 @@
 import React from 'react'
 import { styled, makeStyles } from '@material-ui/core/styles'
+import { TextareaAutosize } from '@material-ui/core';
 
 const SavedCard = (props) => {
     const classes=useStyles(); // for material UI styling
@@ -13,17 +14,25 @@ const SavedCard = (props) => {
 
 const useStyles = makeStyles(theme => ({
   div: {
-    border: '2px solid rgb(252,140,3)'
+    margin: '5% auto',
+    background: 'rgb(252,140,3, .6)',
+    width: '55%',
+    borderRadius: '5px',
+    padding: '5% 0'
   },
   h2: {
     margin: '2%',
     padding: '2%',
     fontSize: '1.5em',
+    background: 'white',
+    borderRadius: '5px',
+    width: '50%',
+    margin: '0 auto'
   },
   h3: {
     margin: '2%',
     padding: '2%',
-    fontSize: '1.5em',
+    fontSize: '1em',
   },
 }));
 
