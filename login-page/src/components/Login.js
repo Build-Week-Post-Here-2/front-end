@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import * as yup from "yup";
 import schema from "../Validation/loginFormSchema";
 import axiosWithAuth from "../utlis/axiosWithAuth";
+import { styled, makeStyles } from "@material-ui/core/styles";
+import Button from '@material-ui/core/Button';
+// import { LOG_ON_SUCCESS, reducer } from "../store";
+// import { useDispatch } from "react-redux";
 
 const initialFormValues = {
   username: "",
@@ -14,6 +18,7 @@ const initialFormErrors = {
 };
 
 const LoginForm = (props) => {
+  // const dispatch = useDispatch();
   const initialDisabled = true;
 
   const [login, setLogin] = useState([]);
@@ -27,8 +32,19 @@ const LoginForm = (props) => {
       .then((res) => {
         setLogin([...login, newLogin]);
         setFormValues(initialFormValues);
+        // dispatch({
+        //   type: LOG_ON_SUCCESS,
+        //   payload: {
+        //     username: res.data.data.username,
+        //     email: res.data.data.email,
+        //     password: res.data.data.password,
+        //   },
+        // });
         window.localStorage.setItem("token", res.data.token);
-        window.location = '/protected'
+        window.location = '/home'
+        window.localStorage.setItem("username", res.data.data.username);
+        window.localStorage.setItem("email", res.data.data.email);
+        window.localStorage.setItem("uid", res.data.data.id);
       })
       .catch((err) => {
         alert(
@@ -78,30 +94,35 @@ const LoginForm = (props) => {
     });
   }, [formValues]);
 
+  const classes = useStyles(); // for material UI styling
+
   return (
-    <div className="App">
-      <form onSubmit={formSubmit}>
-        <label>
+    <div>
+      <form className={classes.form} onSubmit={formSubmit}>
+        <label className={classes.labelUsername}>
           {" "}
-          Username:
+          Username <br />
           <input
             type="text"
             name="username"
             value={formValues.username}
             placeholder="Username"
             onChange={validate}
+            className={classes.input}
           />
           <div>{formErrors.username}</div>
         </label>{" "}
         <br />
-        <label>
-          Password:
+
+        <label className = {classes.labelPassword}>
+          Password <br />
           <input
-            type="text"
+            type="password"
             name="password"
             value={formValues.password}
             placeholder="Password"
             onChange={validate}
+            className={classes.input}
           />
         </label>
         <div>{formErrors.password}</div>
@@ -112,5 +133,34 @@ const LoginForm = (props) => {
     </div>
   );
 };
+//STYLES
+const useStyles = makeStyles((theme) => ({
+  form: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  labelUsername: {
+    marginTop: "5%",
+    fontSize: "1.5em",
+  },
+  labelPassword: {
+    fontSize: "1.5em",
+  },
+  input: {
+    borderRadius: "5px",
+  },
+}));
+
+const LogInButton = styled(Button)({
+  background: "linear-gradient(45deg, blue 1%, rgb(252,140,3) 90%)",
+  border: 0,
+  borderRadius: 3,
+  color: "white",
+  height: 48,
+  padding: "0 30px",
+  fontSize: "1.5em",
+  marginTop: "2%",
+});
 
 export default LoginForm;

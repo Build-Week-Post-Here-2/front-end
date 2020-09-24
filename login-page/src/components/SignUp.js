@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as yup from "yup";
+import { styled, makeStyles } from '@material-ui/core/styles'
+import Button from '@material-ui/core/Button'
 
 import axiosWithAuth from "../utlis/axiosWithAuth";
 import signupSchema from "../Validation/signupFormSchema";
@@ -58,14 +60,16 @@ const SignUp = (props) => {
 
   useEffect(() => {
     signupSchema.isValid(formState).then((valid) => {
-      if (!props) {
-        setDisabled(!valid);
-      } else if (props.btn && formChanged) {
-        // This is true when user is on Account settings and changes the input value
-        setDisabled(!valid);
-      }
+      setDisabled(!valid);
     });
-  }, [formState, formChanged, props]);
+  }, [formState]);
+
+  useEffect(() => {
+
+    signupSchema.isValid(formChanged).then((valid) => {
+      setDisabled(!valid);
+    });
+  }, [formChanged]);
 
   const onFormSubmit = (e) => {
     e.preventDefault();
@@ -97,6 +101,7 @@ const SignUp = (props) => {
         }
       });
   };
+  const classes=useStyles(); // for material UI styling
   return (
     <div>
       {responseMsg.success !== null && (
@@ -108,64 +113,111 @@ const SignUp = (props) => {
           {responseMsg.msg}
         </p>
       )}
-      <form onSubmit={onFormSubmit}>
-        <div className="form-group">
-          <label>
-            Username
+      <form className={classes.form} onSubmit={onFormSubmit}>
+        {/* <div className="form-group"> */}
+          <label className={classes.labelUsername}>
+            Username <br />
             <input
               name="username"
               type="text"
-              className="form-control"
+              // className="form-control"
               placeholder="Username"
               value={formState.username}
               onChange={handleInputChange}
+              className={classes.input}
             />
             <div className="text-danger">{formErrors.username}</div>
           </label>
-        </div>
-        <div className="form-group">
-          <label>
-            Email
+        {/* </div> */}
+        {/* <div className="form-group"> */}
+          <label className={classes.labelEmail}>
+            Email <br />
             <input
               name="email"
               type="email"
-              className="form-control"
+              // className="form-control"
               placeholder="Your email"
               value={formState.email}
               onChange={handleInputChange}
+              className={classes.input}
             />
             <div className="text-danger">{formErrors.email}</div>
           </label>
-        </div>
-        <div className="form-group">
-          <label>
-            Password
+
+        {/* </div> */}
+        {/* <div className="form-group"> */}
+          <label className={classes.labelPassword}>
+            Password <br />
             <input
               name="password"
               type="password"
-              className="form-control"
+              // className="form-control"
               value={formState.password}
               onChange={handleInputChange}
+              className={classes.input}
             />
             <div className="text-danger">{formErrors.password}</div>
           </label>
-        </div>
-        {props.btn ? (
-          <input
-            type="submit"
-            value={props.btn}
-            className={`btn btn-primary ${disabled ? "disabled" : "active"}`}
-          />
-        ) : (
-          <input
-            type="submit"
-            value={"Sign Up"}
-            className={`btn btn-primary ${disabled ? "disabled" : "active"}`}
-          />
-        )}
+        <SignUpButton disabled={disabled} name="loginButton">
+          SignUp
+        </SignUpButton>
+
       </form>
     </div>
   );
 };
 
+
+const useStyles = makeStyles(theme => ({
+  form: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  labelUsername: {
+    marginTop: '5%',
+    fontSize: '1.5em',
+  },
+  labelPassword: {
+    fontSize: '1.5em',
+    marginTop: '2%',
+  },
+  labelEmail: {
+    fontSize: '1.5em',
+    marginTop: '2%',
+  },
+  input: {
+    borderRadius: '5px',
+  }
+}));
+
+const SignUpButton = styled(Button)({
+  background: 'linear-gradient(45deg, blue 1%, rgb(252,140,3) 90%)',
+  border: 0,
+  borderRadius: 3,
+  color: 'white',
+  height: 48,
+  padding: '0 30px',
+  fontSize: '1.5em',
+  marginTop: '2%',
+});
+
+
 export default SignUp;
+
+//OLD LOGIN BUTTON
+{/* </div> */}
+{/* {props.btn ? (
+  <input
+    type="submit"
+    value={props.btn}
+    className={`${disabled ? "disabled" : "active"}`}
+  />
+  ) : (
+  <input
+    type="submit"
+    value={"Sign Up"}
+    // className={classes.input}
+    className={`${disabled ? "disabled" : "active"}`}
+  />
+)} */}

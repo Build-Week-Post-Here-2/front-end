@@ -1,10 +1,14 @@
 import React, {useState} from 'react'
-import {ADD_POST_START, ADD_POST_SUCCESS} from '../store'
-import {useDispatch} from 'react-redux'
+
+
+const initialFormValues = {
+    post_title: 'my new post',
+    post_content: 'nice post',
+    user_id: 1
+}
 
 const AddPost = () => {
-    const [add, setAdd] = useState()
-    const dispatch = useDispatch()
+    const [add, setAdd] = useState(initialFormValues)
     
     const handleChange = (e) =>{
         setAdd({
@@ -14,45 +18,31 @@ const AddPost = () => {
     }
     const handleSubmit = (e) =>{
         e.preventDefault()
-        const newPost ={
-            name: add.name.trim(),
-            description:add.description.trim(),
-            date: add.date.trim(),
-            frequency:add.frequency.trim(),
-    
-        }
-        postNewTodo(newPost)
         setAdd(initialFormValues)
     }
-    const postNewTodo = post =>{
-        console.log("POST PAYLOAD: ", post)
-        dispatch({ type: ADD_POST_START })
-        axiosWithAuth()
-        .post(`/user/posts`, post)
-        .then(res =>{
-          dispatch({ type: ADD_POST_SUCCESS, payload: {todoVals: post, list: listTitle}})
-          console.log("NEW POST RESPONSE: ", res.data);
-        })
-        .catch(err =>{
-          console.log(err)
-        })
-      }
 
     return (
         
         <div>
-        <button onClick={toggle}>Add New Post!</button>
-                <form onSubmit={handleSubmit} id="form" className="hidden">
+        <h3>Add a new Post!</h3>
+                <form onSubmit={handleSubmit} className="hidden">
                     <div>
                         <label>
                             <h4>Title: </h4>
                             <input
                             name='name'
-                            value={form.name}
+                            value={add.post_title}
                             onChange={handleChange} >
                             </input>
                         </label>
                     </div>
+                </form>
+                <form>
+                <input
+                            name='name'
+                            value={add.post_content}
+                            onChange={handleChange} >
+                            </input>
                 </form>
         </div> 
     )
