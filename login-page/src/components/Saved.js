@@ -38,6 +38,7 @@ export default function Saved() {
                 content={postInfo.post_content}
                 />
             })}
+            <DeletePost/>
         </div>
     )
 }
