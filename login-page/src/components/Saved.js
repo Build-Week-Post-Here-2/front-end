@@ -1,16 +1,18 @@
-import React, {useState, useEffect} from 'react';
-import axiosWithAuth from '../utlis/axiosWithAuth';
-import SavedCard from './SavedCard'
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import SavedCard from "./SavedCard";
+import UserSearchPost from "./UserPostSearch";
+import { useParams } from "react-router-dom";
 //styles
-import RedditIcon from '@material-ui/icons/Reddit';
-import { makeStyles } from '@material-ui/core/styles'
-import DeletePost from './DeletePost'
+import RedditIcon from "@material-ui/icons/Reddit";
+import { makeStyles } from "@material-ui/core/styles";
+import axiosWithAuth from "../utlis/axiosWithAuth";
 
 export default function Saved() {
   const { id } = useParams()
 
   const [saved, setSaved] = useState([]);
+  const [searched, setSearched] = useState([]);
 
   useEffect(() => {
     const id = window.localStorage.getItem("uid");
@@ -21,35 +23,54 @@ export default function Saved() {
           //   console.log(res);
           setSaved(res.data.data.posts);
         })
-        .catch(err => {
-            console.log(err)
-        })
-        }
-    }, [saved])
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [saved]);
 
-    const classes=useStyles(); //for materialUI Styles
+  const toggleSearch = (posts) => {
+    setSearched(posts);
+  };
 
-    return (
+  const classes = useStyles(); //for materialUI Styles
 
-        <div> 
-            <h1 className={classes.h1}>Saved P<RedditIcon />sts</h1>
-            {saved.map(postInfo => {
-                return <SavedCard
-                name={postInfo.post_title}
-                content={postInfo.post_content}
-                />
-            })}
-            <DeletePost/>
-        </div>
-    )
+  return (
+    <div>
+      <h1 className={classes.h1}>
+        Saved P<RedditIcon />
+        sts
+      </h1>
+      <UserSearchPost posts={saved} toggleSearch={toggleSearch} />
+      {searched.length > 0 &&
+        searched.map((postInfo, i) => {
+          return (
+            <SavedCard
+              key={i}
+              name={postInfo.post_title}
+              content={postInfo.post_content}
+            />
+          );
+        })}
+      {searched.length === 0 &&
+        saved.map((postInfo, i) => {
+          return (
+            <SavedCard
+              key={i}
+              name={postInfo.post_title}
+              content={postInfo.post_content}
+            />
+          );
+        })}
+    </div>
+  );
 }
 
-const useStyles = makeStyles(theme => ({
-    h1: {
-        fontSize: '4em',
-        margin: '5% auto',
-        border: '2px solid orange',
-        width: '25%'
-    }
-  }));
-
+const useStyles = makeStyles((theme) => ({
+  h1: {
+    fontSize: "4em",
+    margin: "5% auto",
+    border: "2px solid orange",
+    width: "25%",
+  },
+}));
