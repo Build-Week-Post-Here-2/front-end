@@ -38,7 +38,7 @@ export default function Saved() {
   return (
     <div>
       <h1 className={classes.h1}>
-        Saved P<RedditIcon />
+        Saved <br /> P<RedditIcon />
         sts
       </h1>
       <UserSearchPost posts={saved} toggleSearch={toggleSearch} />

@@ -18,7 +18,7 @@ const Home = () => {
             <p className={classes.p}>It's a simple problem, really. You have the content, but you do not know which subreddit to share it on so that it gets all the glory it deserves. Good news - we figured it out for you! No more need for endless subreddit searching to find the right home for your posts. It's easy (we promise!). Sign up, share your post with us, and we will send you on your way to internet stardom.<br /> <br /> What are you waiting for? Try it out!
             </p>
             <NewPost />
-            <h2>Popular Subreddits</h2> <br />
+            <h2 className={classes.h2}>Popular Subreddits</h2> <br />
             <div className={classes.container}>
                 <div>
                     <img className={classes.img} src={ require('../images/Reddit_Mark_OnDark.png') } />
@@ -76,6 +76,10 @@ const useStyles = makeStyles(theme => ({
         margin: '5% auto',
         border: '2px solid orange',
         width: '25%'
+    },
+    h2: {
+        marginTop: '5%',
+        fontSize: '3em'
     },
     container: {
         display: 'flex',
