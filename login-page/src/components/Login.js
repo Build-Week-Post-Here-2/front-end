@@ -139,6 +139,11 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    background: 'rgb(252,140,3, .3)',
+    width: '20%',
+    margin: '5% auto',
+    borderRadius: '5px',
+    padding: '2%'
   },
   labelUsername: {
     marginTop: "5%",
