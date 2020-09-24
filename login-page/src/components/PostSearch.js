@@ -1,42 +1,19 @@
-import React, { useEffect, useState } from 'react'
-import axiosWithAuth from '../utlis/axiosWithAuth'
+import React, { useEffect, useState } from "react";
 
-const initialValue = [
-        {
-            post_title: 'tesla stock'
-        }
-    ]
+const PostSearch = (props) => {
+  const [postSearch, setSearchInput] = useState("");
+  const [filteredPosts, setFilteredPosts] = useState([]);
 
-const SearchPost = () => {
-    const [search, setSearch] = useState(initialValue);
+  const handleInputChange = (e) => {
+    setSearchInput(e.target.value);
+    const result = props.posts.filter((post) => {
+      return post["post_title"].includes(searchInput);
+    });
+    setFilteredPosts(result);
+  };
 
+  useEffect(() => {
 
+});
 
-    useEffect(() => {
-        axiosWithAuth()
-        .get(`/users/${id}/postSearch`)
-        .then(res => {
-            setSearch()
-        })
-        .catch(err => {
-
-        })
-    })
-
-
-    return (
-        <form>
-                <input
-                name="search"
-                type="text"
-                className="form-control"
-                placeholder="Search Reccommendations"
-                value={}
-                onChange={handleChange}
-                />
-            </form>
-    )
-
-}
-
-export default SearchPost
+export default PostSearch;
