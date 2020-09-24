@@ -1,25 +1,35 @@
 import React, { useEffect, useState } from "react";
+import PageviewIcon from "@material-ui/icons/Pageview";
 
 const UserSearchPost = (props) => {
   const [searchInput, setSearchInput] = useState("");
-  const [filteredPosts, setFilteredPosts] = useState([]);
+  const [filteredPosts, setFilteredPosts] = useState(null);
 
   const handleInputChange = (e) => {
     setSearchInput(e.target.value);
-    const result = props.posts.filter((post) => {
-      return post["post_title"].includes(searchInput);
-    });
-    setFilteredPosts(result);
+    if (searchInput.length > 0) {
+      const result = props.posts.filter((post) => {
+        return post["post_title"].includes(searchInput);
+      });
+      setFilteredPosts(result);
+    }
   };
 
   useEffect(() => {
-    if (filteredPosts.length > 0) {
-      console.log(filteredPosts);
+    if (filteredPosts !== null) {
       props.toggleSearch(filteredPosts);
     }
   }, [filteredPosts]);
   return (
-    <input type="search" value={searchInput} onChange={handleInputChange} />
+    <div>
+      <input
+        type="text"
+        placeholder="Search Titles"
+        value={searchInput}
+        onChange={handleInputChange}
+      />
+      <PageviewIcon style={{ fontSize: 45 }} />
+    </div>
   );
 };
 
