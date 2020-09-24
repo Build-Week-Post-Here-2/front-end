@@ -107,6 +107,7 @@ const SignUp = (props) => {
 
   return (
     <div>
+            <h1 className={classes.h1}>Acc<RedditIcon style={{ fontSize: 40 }}  />unt <br />Information</h1>
       {responseMsg.success !== null && (
         <p
           className={`text-center ${
@@ -187,6 +188,12 @@ const useStyles = makeStyles(theme => ({
   input: {
     borderRadius: '5px',
   },
+  h1: {
+    fontSize: '4em',
+    margin: '5% auto',
+    border: '2px solid orange',
+    width: '40%'
+},
 }));
 
 const SignUpButton = styled(Button)({
