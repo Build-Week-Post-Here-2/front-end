@@ -1,5 +1,7 @@
 import React from 'react'
 import { styled, makeStyles } from '@material-ui/core/styles'
+import DeletePost from "./DeletePost";
+import EditPost from './EditPost'
 
 const SavedCard = (props) => {
     const classes=useStyles(); // for material UI styling
@@ -7,6 +9,8 @@ const SavedCard = (props) => {
         <div className = {classes.div}>
             <h2 className = {classes.h2}>Post Name: {props.name}</h2>
             <h3 className = {classes.h3}>Post Content: {props.content}</h3>
+            <DeletePost/>
+            <EditPost/>
         </div>
     );
 }

@@ -9,7 +9,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import axiosWithAuth from "../utlis/axiosWithAuth";
 
 export default function Saved() {
-  const { id } = useParams()
+  // const { id } = useParams()
 
   const [saved, setSaved] = useState([]);
   const [searched, setSearched] = useState([]);
