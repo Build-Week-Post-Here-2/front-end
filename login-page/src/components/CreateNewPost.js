@@ -96,4 +96,4 @@ const CreatePostButton = styled(Button)({
     },
   }));
 
-export default NewPost
+export default NewPost;
