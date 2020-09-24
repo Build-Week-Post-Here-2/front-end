@@ -5,6 +5,7 @@ import RedditIcon from '@material-ui/icons/Reddit'
 import NewPost from './CreateNewPost'
 import 'fontsource-roboto'
 import AddPost from './AddPost';
+import PostSearch from './PostSearch'
 
 const Home = () => {
 
@@ -18,6 +19,7 @@ const Home = () => {
             <p className={classes.p}>It's a simple problem, really. You have the content, but you do not know which subreddit to share it on so that it gets all the glory it deserves. Good news - we figured it out for you! No more need for endless subreddit searching to find the right home for your posts. It's easy (we promise!). Sign up, share your post with us, and we will send you on your way to internet stardom.<br /> <br /> What are you waiting for? Try it out!
             </p>
             <NewPost />
+            <PostSearch/>
             <h2>Popular Subreddits</h2> <br />
             <div className={classes.container}>
                 <div>
