@@ -14,7 +14,6 @@ import Button from "@material-ui/core/Button";
 const initFormVals = {
   post_title: "",
   post_content: "",
-  user_id: 1,
 };
 
 const NewPost = () => {
@@ -25,11 +24,14 @@ const NewPost = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch({ type: CREATE_POST_START });
-    console.log(formVal);
+    const id = window.localStorage.getItem("uid");
+    const data = formVal;
+    data.user_id = id;
+    console.log(data);
     axiosWithAuth()
-      .post(`/posts`, formVal)
+      .post(`/posts`, data)
       .then((res) => {
-        formVal.title.split("-").join(" ");
+        formVal.post_title.split("-").join(" ");
         dispatch({ type: CREATE_POST_SUCCESS, payload: formVal });
         console.log("CREATE POST RESPONSE: ", res);
         // setFormVal(initFormVals);
@@ -42,11 +44,9 @@ const NewPost = () => {
   };
   const handleChanges = (e) => {
     e.persist();
-    const id = window.localStorage.getItem("uid");
     setFormVal({
-      post_title: e.target.value,
-      post_content: "anfowhe",
-      user_id: id,
+      ...formVal,
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -58,11 +58,17 @@ const NewPost = () => {
         <label className={classes.label} htmlFor="title">
           <h3>Create a new post!</h3>
           <input
-            name="textbox"
+            name="post_title"
             type="text"
-            placeholder="Type Here"
+            placeholder="Title"
             onChange={handleChanges}
-            value={formVal.title}
+            value={formVal.post_title}
+          />
+          <textarea
+            name="post_content"
+            value={formVal.post_content}
+            placeholder="Your post"
+            onChange={handleChanges}
           />
         </label>
         <br />
