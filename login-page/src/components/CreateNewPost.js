@@ -10,6 +10,7 @@ import {
 //STYLE IMPORTS
 import { styled, makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
+import TextField from '@material-ui/core/TextField';
 
 const initFormVals = {
   post_title: "",
@@ -54,26 +55,24 @@ const NewPost = () => {
 
   return (
     <div className={classes.container}>
-      <form id="create-list" onSubmit={handleSubmit}>
-        <label className={classes.label} htmlFor="title">
-          <h3>Create a new post!</h3>
-          <input
-            name="post_title"
-            type="text"
-            placeholder="Title"
-            onChange={handleChanges}
-            value={formVal.post_title}
-          />
-          <textarea
-            name="post_content"
-            value={formVal.post_content}
-            placeholder="Your post"
-            onChange={handleChanges}
-          />
-        </label>
-        <br />
+      <form onSubmit={handleSubmit} >
+        <div className={classes.root} >
+        <TextField name='post_title' onChange={handleChanges} value={formVal.post_title} id="outlined-basic" label="Post Title Here" variant="outlined" />
+        <TextField
+          id="outlined-multiline-static"
+          label="Content"
+          multiline
+          rows={6}
+          defaultValue="Post Content Here"
+          variant="outlined"
+          name="post_content"
+          value={formVal.post_content}
+          placeholder="Your post"
+          onChange={handleChanges}
+        />
+        </div>
         <CreatePostButton type="submit">Submit</CreatePostButton>
-      </form>
+    </form>
     </div>
   );
 };
@@ -81,31 +80,27 @@ const NewPost = () => {
 const CreatePostButton = styled(Button)({
   background: "linear-gradient(45deg, blue 10%, rgb(252, 140, 3) 90%)",
   border: 0,
-  borderRadius: 3,
+  borderRadius: '5px',
   color: "white",
-  height: 48,
-  padding: "0 30px",
-  fontSize: "1.5em",
-  marginBottom: "5%",
+  padding: "0 15px",
+  fontSize: "1em",
+  marginBottom: "2%",
 });
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
     fontSize: "2em",
-    margin: "5% auto",
+    margin: "0 auto",
     background: "rgb(252,140,3, .3)",
     borderRadius: "5px",
-    padding: "5%",
+    padding: "1%",
     width: "60%",
   },
-  label: {
-    margin: "2%",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
+  root: {
+    '& > *': {
+      margin: '2% auto',
+      width: '90%',
+    },
   },
 }));
 
