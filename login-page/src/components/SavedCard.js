@@ -7,7 +7,7 @@ import { TextareaAutosize } from "@material-ui/core";
 const SavedCard = (props) => {
   const classes = useStyles(); // for material UI styling
   return (
-    <div className={classes.div}>
+    <div className={classes.div} dataset={props.pid}>
       <h2 className={classes.h2}>Post Name: {props.name}</h2>
       <h3 className={classes.h3}>Post Content: {props.content}</h3>
       <DeletePost />
