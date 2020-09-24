@@ -17,7 +17,7 @@ const DeletePost = () => {
             .delete(`/posts/${e.id}`)
             .then( res => {
                 updatePosts(
-                    e.filter((item) => item.id !== colors.id)
+                    e.filter((item) => item.id !== e.id)
                 )
             })
     }

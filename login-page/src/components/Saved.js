@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 //styles
 import RedditIcon from '@material-ui/icons/Reddit';
 import { makeStyles } from '@material-ui/core/styles'
+import DeletePost from './DeletePost'
 
 export default function Saved() {
   const { id } = useParams()
