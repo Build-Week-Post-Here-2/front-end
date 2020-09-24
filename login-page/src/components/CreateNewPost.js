@@ -50,7 +50,10 @@ const NewPost = (props) => {
       axiosWithAuth()
         .put(`/posts/${postId}`, data)
         .then((res) => {
-          console.log(res);
+          if (res.statusText === "Accepted") {
+            console.log(res);
+            window.location = "/savedposts";
+          }
         })
         .catch((err) => {
           console.log(err);

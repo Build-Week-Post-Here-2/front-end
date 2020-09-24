@@ -19,7 +19,7 @@ const EditPost = (props) => {
 
   const handleOpen = (e) => {
     const postId = props.data.pid;
-    const title = props.postData.name;
+    const title = props.data.name;
     const content = props.data.content;
 
     setPostData({ post_title: title, post_content: content });
