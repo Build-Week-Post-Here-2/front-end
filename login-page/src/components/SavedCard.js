@@ -11,7 +11,7 @@ const SavedCard = (props) => {
       <h2 className={classes.h2}>Post Name: {props.name}</h2>
       <h3 className={classes.h3}>Post Content: {props.content}</h3>
       <DeletePost />
-      <EditPost />
+      <EditPost data={props} />
     </div>
   );
 };
