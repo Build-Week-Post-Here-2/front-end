@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button'
 import RedditIcon from '@material-ui/icons/Reddit'
 import NewPost from './CreateNewPost'
 import 'fontsource-roboto'
+import AddPost from './AddPost';
 
 const Home = () => {
 

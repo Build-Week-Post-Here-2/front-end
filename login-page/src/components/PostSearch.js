@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
 
-const SearchPost = () => {
+const PostSearch = (props) => {
 
+  useEffect(() => {
 
-    
-}
+  })
 
-export default SearchPost
+  return {
+      
+  }
+};
+
+export default PostSearch;
