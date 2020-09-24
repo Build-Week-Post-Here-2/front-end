@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import * as yup from "yup";
 import { styled, makeStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
+import RedditIcon from '@material-ui/icons/Reddit'
 
 import axiosWithAuth from "../utlis/axiosWithAuth";
 import signupSchema from "../Validation/signupFormSchema";
@@ -101,9 +102,14 @@ const SignUp = (props) => {
         }
       });
   };
+
   const classes=useStyles(); // for material UI styling
+
   return (
     <div>
+      <h1 className={classes.h1}>P<RedditIcon style={{ fontSize: 40 }}  />st<br /> Here</h1>
+      <p className={classes.p}>It's a simple problem, really. You have the content, but you do not know which subreddit to share it on so that it gets all the glory it deserves. Good news - we figured it out for you! No more need for endless subreddit searching to find the right home for your posts. It's easy (we promise!). Sign up, share your post with us, and we will send you on your way to internet stardom.<br /> <br /> What are you waiting for?
+            </p>
       {responseMsg.success !== null && (
         <p
           className={`text-center ${
@@ -114,13 +120,12 @@ const SignUp = (props) => {
         </p>
       )}
       <form className={classes.form} onSubmit={onFormSubmit}>
-        {/* <div className="form-group"> */}
+        <h3>Create an Account</h3>
           <label className={classes.labelUsername}>
             Username <br />
             <input
               name="username"
               type="text"
-              // className="form-control"
               placeholder="Username"
               value={formState.username}
               onChange={handleInputChange}
@@ -128,14 +133,11 @@ const SignUp = (props) => {
             />
             <div className="text-danger">{formErrors.username}</div>
           </label>
-        {/* </div> */}
-        {/* <div className="form-group"> */}
           <label className={classes.labelEmail}>
             Email <br />
             <input
               name="email"
               type="email"
-              // className="form-control"
               placeholder="Your email"
               value={formState.email}
               onChange={handleInputChange}
@@ -143,15 +145,11 @@ const SignUp = (props) => {
             />
             <div className="text-danger">{formErrors.email}</div>
           </label>
-
-        {/* </div> */}
-        {/* <div className="form-group"> */}
           <label className={classes.labelPassword}>
             Password <br />
             <input
               name="password"
               type="password"
-              // className="form-control"
               value={formState.password}
               onChange={handleInputChange}
               className={classes.input}
@@ -161,18 +159,69 @@ const SignUp = (props) => {
         <SignUpButton type='submit' disabled={disabled} name="loginButton">
           submit
         </SignUpButton>
-
       </form>
+      <h2 className={classes.h2}>Popular Subreddits</h2> <br />
+      <div className={classes.container}>
+                <div>
+                    <img className={classes.img} src={ require('../images/Reddit_Mark_OnDark.png') } />
+                    <h4>r/announcements</h4>
+                </div>
+                <div>
+                    <img className={classes.img} src={ require('../images/Reddit_Mark_OnDark.png') } />
+                    <h4>r/gaming</h4>
+                </div>
+                <div>
+                    <img className={classes.img} src={ require('../images/Reddit_Mark_OnDark.png') } />
+                    <h4>r/funny</h4>
+                </div>
+                <div>
+                    <img className={classes.img} src={ require('../images/Reddit_Mark_OnDark.png') } />
+                    <h4>r/AskReddit</h4>
+                </div>
+            </div>
+            <br />
+            <br />
+            <br />
+            <div className={classes.container}>
+                <div>
+                    <img className={classes.img} src={ require('../images/Reddit_Mark_OnDark.png') } />
+                    <h4>r/pics</h4>
+                </div>
+                <div>
+                    <img className={classes.img} src={ require('../images/Reddit_Mark_OnDark.png') } />
+                    <h4>r/science</h4>
+                </div>
+                <div>
+                    <img className={classes.img} src={ require('../images/Reddit_Mark_OnDark.png') } />
+                    <h4>r/WorldNews</h4>
+                </div>
+                <div>
+                    <img className={classes.img} src={ require('../images/Reddit_Mark_OnDark.png') } />
+                    <h4>r/aww</h4>
+                </div>
+            </div>
+
     </div>
   );
 };
 
 
 const useStyles = makeStyles(theme => ({
+  h1: {
+    fontSize: '4em',
+    margin: '5% auto',
+    border: '2px solid orange',
+    width: '25%'
+},
   form: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    background: 'rgb(252,140,3, .3)',
+    width: '25%',
+    margin: '0 auto',
+    borderRadius: '5px',
+    padding: '2%'
   },
   labelUsername: {
     marginTop: '5%',
@@ -188,7 +237,24 @@ const useStyles = makeStyles(theme => ({
   },
   input: {
     borderRadius: '5px',
-  }
+  },
+  p: {
+    fontFamily: 'Roboto',
+    fontSize: '2em',
+    margin: '5% 5% 2% 5%',
+    background:'rgb(252,140,3, .3)',
+    borderRadius: '5px',
+    padding: '5% 5% 2% 5%',
+},
+h2: {
+  marginTop: '5%',
+  fontSize: '3em'
+},
+container: {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent:'space-around',
+},
 }));
 
 const SignUpButton = styled(Button)({
