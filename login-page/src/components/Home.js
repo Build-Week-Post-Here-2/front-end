@@ -5,13 +5,6 @@ import RedditIcon from '@material-ui/icons/Reddit'
 import NewPost from './CreateNewPost'
 import 'fontsource-roboto'
 import PostSearch from './PostSearch'
-// const Reccommend = {
-//     post_title: 'new post',
-//     post_content: 'very good post',
-//     Image: 0,
-//     Video: 0,
-//     External_link: 0
-// }
 
 const Home = () => {
 

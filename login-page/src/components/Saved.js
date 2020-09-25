@@ -1,26 +1,24 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import SavedCard from "./SavedCard";
 import UserSearchPost from "./UserPostSearch";
-import { useParams } from "react-router-dom";
 //styles
 import RedditIcon from "@material-ui/icons/Reddit";
 import { makeStyles } from "@material-ui/core/styles";
 import axiosWithAuth from "../utlis/axiosWithAuth";
 
 export default function Saved() {
-  // const { id } = useParams()
 
   const [saved, setSaved] = useState([]);
+  const [done, setDone] = useState(false);
   const [searched, setSearched] = useState([]);
 
   useEffect(() => {
     const id = window.localStorage.getItem("uid");
-    if (id && saved.length === 0) {
+    if (id && saved.length === 0 && !done) {
+      setDone(true);
       axiosWithAuth()
         .get(`/users/${id}/posts`)
         .then((res) => {
-          //   console.log(res);
           setSaved(res.data.data.posts);
         })
         .catch((err) => {

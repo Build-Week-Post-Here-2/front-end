@@ -1,8 +1,7 @@
 import React from "react";
-import { styled, makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import DeletePost from "./DeletePost";
 import EditPost from "./EditPost";
-import { TextareaAutosize } from "@material-ui/core";
 
 const SavedCard = (props) => {
   const classes = useStyles(); // for material UI styling
