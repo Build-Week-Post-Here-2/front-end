@@ -21,15 +21,13 @@ import {
 
 const initialState = {
   data: {
-    userID: "",
-    username: "",
-    password: "",
-    email: "",
-    isLoggedIn: false,
-  },
-  posts: [],
-  loading: false,
-  error: "",
+    content: "",
+    name: "",
+    pid: 0
+    },
+  // posts: [],
+  // loading: false,
+  // error: "",
 };
 
 export const reducer = (state = initialState, { type, payload }) => {
