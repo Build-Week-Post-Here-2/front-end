@@ -9,7 +9,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import axiosWithAuth from "../utlis/axiosWithAuth";
 
 export default function Saved() {
-  const { id } = useParams()
+  // const { id } = useParams()
 
   const [saved, setSaved] = useState([]);
   const [searched, setSearched] = useState([]);
@@ -46,7 +46,7 @@ export default function Saved() {
         searched.map((postInfo, i) => {
           return (
             <SavedCard
-              key={i}
+              key={postInfo.id}
               name={postInfo.post_title}
               content={postInfo.post_content}
             />
@@ -56,9 +56,10 @@ export default function Saved() {
         saved.map((postInfo, i) => {
           return (
             <SavedCard
-              key={i}
+              key={postInfo.id}
               name={postInfo.post_title}
               content={postInfo.post_content}
+              pid={postInfo.id}
             />
           );
         })}
