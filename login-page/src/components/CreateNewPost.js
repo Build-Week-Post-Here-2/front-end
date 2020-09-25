@@ -12,7 +12,7 @@ import {
 //STYLE IMPORTS
 import { styled, makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import TextField from '@material-ui/core/TextField';
+import TextField from "@material-ui/core/TextField";
 
 const initFormVals = {
   post_title: "",
@@ -24,7 +24,7 @@ const initialFormErrors = {
   content: "",
 };
 
-const NewPost = () => {
+const NewPost = (props) => {
   const initialDisabled = true;
   const dispatch = useDispatch();
   const [formVal, setFormVal] = useState(initFormVals);
@@ -32,32 +32,53 @@ const NewPost = () => {
   const [disabled, setDisabled] = useState(initialDisabled);
 
   // const user = useSelector(state => state.user)
+  useEffect(() => {
+    if (props.postData) {
+      setFormVal(props.postData);
+    }
+  }, [props]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch({ type: CREATE_POST_START });
     const id = window.localStorage.getItem("uid");
     const data = formVal;
-    data.user_id = id;
-    // console.log(data);
-    axiosWithAuth()
-      .post(`/posts`, data)
-      .then((res) => {
-        dispatch({ type: CREATE_POST_SUCCESS, payload: res.data.data });
-        // console.log("CREATE POST RESPONSE: ", res);
-        // setFormVal(initFormVals);
-      })
-      .catch((err) => {
-        dispatch({ type: CREATE_POST_FAIL });
-        setFormVal(initFormVals);
-        console.log(err);
-      });
+
+    if (props) {
+      // Edit post
+      const postId = props.postId;
+      axiosWithAuth()
+        .put(`/posts/${postId}`, data)
+        .then((res) => {
+          if (res.statusText === "Accepted") {
+            console.log(res);
+            window.location = "/savedposts";
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      // Create a new post
+      data.user_id = id;
+      axiosWithAuth()
+        .post(`/posts`, data)
+        .then((res) => {
+          dispatch({ type: CREATE_POST_SUCCESS, payload: res.data.data });
+          // console.log("CREATE POST RESPONSE: ", res);
+          // setFormVal(initFormVals);
+        })
+        .catch((err) => {
+          dispatch({ type: CREATE_POST_FAIL });
+          setFormVal(initFormVals);
+          console.log(err);
+        });
+    }
   };
   const handleChanges = (e) => {
-
     e.persist();
     const name = e.target.name;
-    const value = e.target.value
+    const value = e.target.value;
 
     yup
       .reach(schema, name)
@@ -90,37 +111,34 @@ const NewPost = () => {
 
   return (
     <div className={classes.container}>
-      <form onSubmit={handleSubmit} >
-        <div className={classes.root} >
-        <TextField 
-        name='post_title' 
-        onChange={handleChanges} 
-        value={formVal.post_title} id="outlined-basic" 
-        label="(Post Title Here)" 
-        variant="outlined" 
-        />
-        <div className={classes.error}>{formErrors.post_title}</div>
+      <form onSubmit={handleSubmit}>
+        <div className={classes.root}>
+          <TextField
+            name="post_title"
+            onChange={handleChanges}
+            value={formVal.post_title}
+            id="outlined-basic"
+            label="(Post Title Here)"
+            variant="outlined"
+          />
+          <div className={classes.error}>{formErrors.post_title}</div>
 
-        <TextField
-          id="outlined-multiline-static"
-          label="Content"
-          multiline
-          rows={6}
-          defaultValue="Post Content Here"
-          variant="outlined"
-          name="post_content"
-          value={formVal.post_content}
-          placeholder="(Post Content Here)"
-          onChange={handleChanges}
-        />
-        <div className={classes.error}>{formErrors.post_content}</div>
+          <TextField
+            label="Content"
+            multiline
+            rows={6}
+            variant="outlined"
+            name="post_content"
+            value={formVal.post_content}
+            placeholder="(Post Content Here)"
+            onChange={handleChanges}
+          />
+          <div className={classes.error}>{formErrors.post_content}</div>
         </div>
-        <CreatePostButton 
-        type="submit"
-        disabled={disabled}
-        >Submit
+        <CreatePostButton type="submit" disabled={disabled}>
+          Submit
         </CreatePostButton>
-    </form>
+      </form>
     </div>
   );
 };
@@ -128,7 +146,7 @@ const NewPost = () => {
 const CreatePostButton = styled(Button)({
   background: "linear-gradient(45deg, blue 10%, rgb(252, 140, 3) 90%)",
   border: 0,
-  borderRadius: '5px',
+  borderRadius: "5px",
   color: "white",
   padding: "0 15px",
   fontSize: "1em",
@@ -145,13 +163,13 @@ const useStyles = makeStyles((theme) => ({
     width: "60%",
   },
   error: {
-    fontSize: '.4em',
-    color: 'red',
+    fontSize: ".4em",
+    color: "red",
   },
   root: {
-    '& > *': {
-      margin: '2% auto',
-      width: '90%',
+    "& > *": {
+      margin: "2% auto",
+      width: "90%",
     },
   },
 }));
