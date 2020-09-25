@@ -1,48 +1,69 @@
 import React from "react";
-import styled from "styled-components";
-import { NavLink } from "react-router-dom";
-import RedditIcon from '@material-ui/icons/Reddit';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import { withStyles } from '@material-ui/core/styles';
+import Link from '@material-ui/core/Link';
+
+const NavBar = withStyles ({
+  root: {
+    backgroundColor: 'rgb(252,140,3, .8)'
+      }
+})(AppBar);
+
+const LinkContainer = withStyles ({
+  root: {
+    display: 'flex',
+    justifyContent: 'center',
+      }
+})(Toolbar);
+
+const NavLink = withStyles ({
+  root: {
+    margin: '0 10% 0 3%',
+    fontSize: '1.3em',
+    color: 'white',
+    textDecoration: 'none',
+      "&:hover": {
+        color: 'white',
+      }
+  },
+})(Link);
 
 const NavigationBar = (user) => {
+
   return (
-    <StyledNav>
-      <StyledNavLink to="/home">Home</StyledNavLink>
-      {!window.localStorage.getItem("token") ? (
-        <StyledNavLink to="/login">Log In</StyledNavLink>
-      ) : (
-        <></>
-      )}
-      {!window.localStorage.getItem("token") ? (
-        <StyledNavLink to="/signup">Sign Up</StyledNavLink>
-      ) : (
-        <></>
-      )}
-      {window.localStorage.getItem("token") ? (
-        <StyledNavLink to="/account">Account Settings</StyledNavLink>
-      ) : (
-        <></>
-      )}
-      {window.localStorage.getItem("token") ? (
-        <StyledNavLink to="/savedposts">Saved Posts</StyledNavLink>
-      ) : (
-        <></>
-      )}
-    </StyledNav>
+    <div>
+      <NavBar position="static">
+        <LinkContainer>
+          {!window.localStorage.getItem("token") ? (
+            <NavLink href="/login">Log In</NavLink>
+          ) : (
+            <></>
+          )}
+          {!window.localStorage.getItem("token") ? (
+            <NavLink href="/signup">Sign Up</NavLink>
+          ) : (
+            <></>
+          )}
+          {window.localStorage.getItem("token") ? (
+            <NavLink href="/home">Home</NavLink>
+          ) : (
+            <></>
+          )}
+          {window.localStorage.getItem("token") ? (
+            <NavLink href="/account">Account Settings</NavLink>
+          ) : (
+            <></>
+          )}
+          {window.localStorage.getItem("token") ? (
+            <NavLink href="/savedposts">Saved Posts</NavLink>
+          ) : (
+            <></>
+          )}
+        </LinkContainer>
+      </NavBar>
+    </div>
   );
 };
-
-const StyledNav = styled.nav`
-  background: rgb(252, 140, 3);
-  height: 10vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-const StyledNavLink = styled(NavLink)`
-  margin: 0 10% 0 3%;
-  font-size: 1.3em;
-  color: white;
-  text-decoration: none;
-`;
 
 export default NavigationBar
