@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import * as yup from "yup";
 import { styled, makeStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
+import RedditIcon from '@material-ui/icons/Reddit'
 
 import axiosWithAuth from "../utlis/axiosWithAuth";
 import signupSchema from "../Validation/signupFormSchema";
@@ -101,9 +102,12 @@ const SignUp = (props) => {
         }
       });
   };
+
   const classes=useStyles(); // for material UI styling
+
   return (
     <div>
+            <h1 className={classes.h1}>Acc<RedditIcon style={{ fontSize: 40 }}  />unt <br />Information</h1>
       {responseMsg.success !== null && (
         <p
           className={`text-center ${
@@ -114,13 +118,11 @@ const SignUp = (props) => {
         </p>
       )}
       <form className={classes.form} onSubmit={onFormSubmit}>
-        {/* <div className="form-group"> */}
           <label className={classes.labelUsername}>
             Username <br />
             <input
               name="username"
               type="text"
-              // className="form-control"
               placeholder="Username"
               value={formState.username}
               onChange={handleInputChange}
@@ -128,14 +130,11 @@ const SignUp = (props) => {
             />
             <div className="text-danger">{formErrors.username}</div>
           </label>
-        {/* </div> */}
-        {/* <div className="form-group"> */}
           <label className={classes.labelEmail}>
             Email <br />
             <input
               name="email"
               type="email"
-              // className="form-control"
               placeholder="Your email"
               value={formState.email}
               onChange={handleInputChange}
@@ -143,15 +142,11 @@ const SignUp = (props) => {
             />
             <div className="text-danger">{formErrors.email}</div>
           </label>
-
-        {/* </div> */}
-        {/* <div className="form-group"> */}
           <label className={classes.labelPassword}>
             Password <br />
             <input
               name="password"
               type="password"
-              // className="form-control"
               value={formState.password}
               onChange={handleInputChange}
               className={classes.input}
@@ -161,7 +156,6 @@ const SignUp = (props) => {
         <SignUpButton type='submit' disabled={disabled} name="loginButton">
           submit
         </SignUpButton>
-
       </form>
     </div>
   );
@@ -173,6 +167,11 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    background: 'rgb(252,140,3, .3)',
+    width: '25%',
+    margin: '0 auto',
+    borderRadius: '5px',
+    padding: '2%'
   },
   labelUsername: {
     marginTop: '5%',
@@ -188,7 +187,13 @@ const useStyles = makeStyles(theme => ({
   },
   input: {
     borderRadius: '5px',
-  }
+  },
+  h1: {
+    fontSize: '4em',
+    margin: '5% auto',
+    border: '2px solid orange',
+    width: '40%'
+},
 }));
 
 const SignUpButton = styled(Button)({
@@ -204,20 +209,3 @@ const SignUpButton = styled(Button)({
 
 
 export default SignUp;
-
-//OLD LOGIN BUTTON
-{/* </div> */}
-{/* {props.btn ? (
-  <input
-    type="submit"
-    value={props.btn}
-    className={`${disabled ? "disabled" : "active"}`}
-  />
-  ) : (
-  <input
-    type="submit"
-    value={"Sign Up"}
-    // className={classes.input}
-    className={`${disabled ? "disabled" : "active"}`}
-  />
-)} */}

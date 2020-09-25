@@ -6,6 +6,7 @@ import { makeStyles, styled } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import { LOG_ON_SUCCESS, reducer } from "../store";
 import { useDispatch } from "react-redux";
+import RedditIcon from '@material-ui/icons/Reddit'
 
 const initialFormValues = {
   username: "",
@@ -98,6 +99,7 @@ const LoginForm = (props) => {
 
   return (
     <div>
+      <h1 className={classes.h1}>L<RedditIcon style={{ fontSize: 40 }}/>gin</h1>
       <form className={classes.form} onSubmit={formSubmit}>
         <label className={classes.labelUsername}>
           {" "}
@@ -139,6 +141,11 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    background: 'rgb(252,140,3, .3)',
+    width: '30%',
+    margin: '5% auto',
+    borderRadius: '5px',
+    padding: '2%'
   },
   labelUsername: {
     marginTop: "5%",
@@ -150,6 +157,12 @@ const useStyles = makeStyles((theme) => ({
   input: {
     borderRadius: "5px",
   },
+  h1: {
+    fontSize: '4em',
+    margin: '5% auto',
+    border: '2px solid orange',
+    width: '25%'
+},
 }));
 
 const LogInButton = styled(Button)({
