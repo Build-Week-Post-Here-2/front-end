@@ -3,6 +3,9 @@ import Modal from "@material-ui/core/Modal";
 import { makeStyles } from "@material-ui/core/styles";
 import NewPost from "./CreateNewPost";
 
+import { styled } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
+
 const initFormVals = {
   post_title: "",
   post_content: "",
@@ -32,7 +35,7 @@ const EditPost = (props) => {
 
   return (
     <>
-      <button onClick={handleOpen}>Edit</button>
+      <EditButton onClick={handleOpen}>Edit</EditButton>
       <Modal open={open} onClose={handleClose}>
         <div style={modalStyle} className={classes.paper}>
           <NewPost postData={postData} postId={postId} />
@@ -62,5 +65,16 @@ function getModalStyle() {
     transform: `translate(-${top}%, -${left}%)`,
   };
 }
+
+const EditButton = styled(Button)({
+  background: "linear-gradient(280deg, blue 50%, rgb(252,140,3) 90%)",
+  border: 0,
+  borderRadius: 3,
+  color: "white",
+  height: 48,
+  padding: "0 30px",
+  fontSize: "1.5em",
+  marginTop: "2%",
+});
 
 export default EditPost;
