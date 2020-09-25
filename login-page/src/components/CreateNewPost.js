@@ -44,7 +44,7 @@ const NewPost = (props) => {
     const id = window.localStorage.getItem("uid");
     const data = formVal;
 
-    if (props) {
+    if (props && props.postId) {
       // Edit post
       const postId = props.postId;
       axiosWithAuth()
