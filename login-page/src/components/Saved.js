@@ -9,11 +9,13 @@ import axiosWithAuth from "../utlis/axiosWithAuth";
 export default function Saved() {
 
   const [saved, setSaved] = useState([]);
+  const [done, setDone] = useState(false);
   const [searched, setSearched] = useState([]);
 
   useEffect(() => {
     const id = window.localStorage.getItem("uid");
-    if (id && saved.length === 0) {
+    if (id && saved.length === 0 && !done) {
+      setDone(true);
       axiosWithAuth()
         .get(`/users/${id}/posts`)
         .then((res) => {
