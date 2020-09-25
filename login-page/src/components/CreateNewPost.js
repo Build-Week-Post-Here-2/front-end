@@ -2,7 +2,7 @@ import React from "react";
 import * as yup from "yup";
 import schema from "../Validation/homeFormSchema";
 import { useDispatch } from "react-redux";
-import { useState, useSelector, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axiosWithAuth from "../utlis/axiosWithAuth";
 import {
   CREATE_POST_START,

@@ -10,7 +10,7 @@ const SavedCard = (props) => {
     <div className={classes.div} dataset={props.pid}>
       <h2 className={classes.h2}>Post Name: {props.name}</h2>
       <h3 className={classes.h3}>Post Content: {props.content}</h3>
-      <DeletePost/>
+      <DeletePost data={props}/>
       <EditPost data={props} />
     </div>
   );

@@ -4,7 +4,7 @@ import schema from "../Validation/loginFormSchema";
 import axiosWithAuth from "../utlis/axiosWithAuth";
 import { makeStyles, styled } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import { LOG_ON_SUCCESS, reducer } from "../store";
+import { LOG_ON_SUCCESS } from "../store";
 import { useDispatch } from "react-redux";
 import RedditIcon from '@material-ui/icons/Reddit'
 

@@ -21,9 +21,9 @@ import {
 
 const initialState = {
   data: {
-    content: "",
-    name: "",
-    pid: 0
+    post_content: "money",
+    post_title: "make more money",
+    id: 0
     },
   // posts: [],
   // loading: false,
