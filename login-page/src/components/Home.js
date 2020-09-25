@@ -4,8 +4,14 @@ import Button from '@material-ui/core/Button'
 import RedditIcon from '@material-ui/icons/Reddit'
 import NewPost from './CreateNewPost'
 import 'fontsource-roboto'
-import AddPost from './AddPost';
 import PostSearch from './PostSearch'
+const Reccommend = {
+    post_title: 'new post',
+    post_content: 'very good post',
+    Image: 0,
+    Video: 0,
+    External_link: 0
+}
 
 const Home = () => {
 
@@ -19,12 +25,9 @@ const Home = () => {
             <p className={classes.p}>It's a simple problem, really. You have the content, but you do not know which subreddit to share it on so that it gets all the glory it deserves. Good news - we figured it out for you! No more need for endless subreddit searching to find the right home for your posts. It's easy (we promise!). Sign up, share your post with us, and we will send you on your way to internet stardom.<br /> <br /> What are you waiting for? Try it out!
             </p>
             <NewPost />
-<<<<<<< HEAD
-            <PostSearch/>
-            <h2>Popular Subreddits</h2> <br />
-=======
+            <br/>
+            <PostSearch postData={Reccommend}/>
             <h2 className={classes.h2}>Popular Subreddits</h2> <br />
->>>>>>> 38ea17fa2d8c9505347857cbe7fab39363a2ebd8
             <div className={classes.container}>
                 <div>
                     <img className={classes.img} src={ require('../images/Reddit_Mark_OnDark.png') } />
