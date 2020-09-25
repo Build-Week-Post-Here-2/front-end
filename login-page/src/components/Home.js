@@ -23,6 +23,10 @@ const Home = () => {
             <img src={ require('../images/reddit-alient.png') } />
 
             <NewPost />
+            <br/>
+            <PostSearch/>
+            <br/>
+            <br/>
         </div>
     )
 }

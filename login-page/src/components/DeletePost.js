@@ -1,14 +1,17 @@
 import React, {useState} from 'react'
-import axiosWithAuth from '../utlis/axiosWithAuth'
+import axios from 'axios'
+import {useParams} from 'react-router-dom'
 
 const DeletePost = () => {
-
-    const delPost = posts => {
-        axiosWithAuth()
-            .delete(`/posts/${posts.id}`)
+    // const {id} = useParams()
+    const delPost = (e) => {
+        e.preventDefault();
+        axios
+            .delete(`/posts}`)
             .then( res => {
                 console.log(res)
                 console.log(res.data)
+
             })
             .catch(err => {
                 console.log(err)
