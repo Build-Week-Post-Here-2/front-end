@@ -1,8 +1,7 @@
 import React from "react";
-import { styled, makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import DeletePost from "./DeletePost";
 import EditPost from "./EditPost";
-import { TextareaAutosize } from "@material-ui/core";
 
 const SavedCard = (props) => {
   const classes = useStyles(); // for material UI styling
@@ -10,7 +9,7 @@ const SavedCard = (props) => {
     <div className={classes.div} dataset={props.pid}>
       <h2 className={classes.h2}>Post Name: {props.name}</h2>
       <h3 className={classes.h3}>Post Content: {props.content}</h3>
-      <DeletePost/>
+      <DeletePost data={props}/>
       <EditPost data={props} />
     </div>
   );

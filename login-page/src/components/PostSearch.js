@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 // import axiosWithAuth from "../utlis/axiosWithAuth";
 import axios from 'axios'
 
@@ -10,14 +10,6 @@ const initialState = {
         External_link: 0
 }
 
- const dummyData = {
-        post_title: "workout",
-        post_content: "gym",
-        Image: 0,
-        Video: 0,
-        External_link: 0
-    }
-
 const PostSearch = (props) => {
     const [searchInput, setSearchInput] = useState(initialState);
     
@@ -25,7 +17,7 @@ const PostSearch = (props) => {
     const onSubmit = () => {
         console.log(searchInput);
         axios
-        .post(`https://reddit-sami.herokuapp.com/api/posts/prediction`, dummyData)
+        .post(`https://reddit-sami.herokuapp.com/api/posts/prediction`, searchInput)
         .then(res => {
             console.log(res.data);
         })

@@ -1,20 +1,14 @@
-import React, {useState} from 'react'
-import {useHistory} from 'react-router-dom'
+import React from 'react'
 import axiosWithAuth from '../utlis/axiosWithAuth'
-import { useDispatch } from 'react-redux'
-import { DEL_POST } from '../store'
 
-const DeletePost = ({pid, name, content}) => {
-    const dispatch = useDispatch()
-    const {push} = useHistory()
+const DeletePost = (props) => {
 
     const delPost = (e) => {
         axiosWithAuth()
-            .delete(`/posts/${pid}`)
+            .delete(`/posts/${props.data.pid}`)
             .then( res => {
                 console.log(res)
-                dispatch({type: DEL_POST, payload: {name: name, content: content}})
-                push('/savedposts')
+                window.location = '/savedposts'
             })
             .catch(err => {
                 console.log(err)
